@@ -7,8 +7,6 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-const key = "go-proximity:test-set"
-
 var (
 	set          *LocationSet
 	lat          = 123.0

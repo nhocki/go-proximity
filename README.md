@@ -38,6 +38,8 @@ func main() {
 }
 ```
 
+# Customizing
+
 ## Setting the Redis Client
 
 Since this library doesn't want to force you to use one Redis library or another,
@@ -54,4 +56,29 @@ To make this easier, an interface is provided for Radix:
 
 ```go
 func WrapRadixClient(radixClient) *Client
+```
+
+## Getting Intervals
+
+A `LocationSet` takes an `IntervalFinder` function that users can override to
+match their needs. If no function is provided a default one will be used.
+
+To override it, create a function that matches:
+
+```go
+type IntervalFinder func(lat, lng, radius float64) []Int64arr
+```
+
+`Int64arr` is a sortable `type Int64arr []int64`.
+
+# Tests
+
+**To run tests, you must have Redis running on the default port.** Tests will
+use the `go-proximity:test-set` key to run. All tests cleanup after they're
+done to prevent problems.
+
+Run tests with:
+
+```sh
+go test -v
 ```

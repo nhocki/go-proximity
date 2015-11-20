@@ -2,6 +2,8 @@ package proximity
 
 import "github.com/stretchr/testify/mock"
 
+const key = "go-proximity:test-set"
+
 type testClient struct {
 	mock.Mock
 	results  []string
