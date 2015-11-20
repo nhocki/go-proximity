@@ -82,3 +82,5 @@ Run tests with:
 ```sh
 go test -v
 ```
+
+Copyright (c) 2015 ride group inc.
