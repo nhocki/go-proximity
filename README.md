@@ -1,5 +1,7 @@
 # go-proximity
 
+**This is a BETA. Interface might change a bit.**
+
 This library provides an easy way to do proximity queries to locations stored
 in a Redis set.
 
