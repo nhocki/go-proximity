@@ -6,8 +6,6 @@ const key = "go-proximity:test-set"
 
 type testClient struct {
 	mock.Mock
-	results  []string
-	intReply int64
 }
 
 func (c *testClient) ZAdd(set string, score float64, value string) (int64, error) {
