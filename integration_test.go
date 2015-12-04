@@ -18,10 +18,7 @@ func Example() {
 	hErr(err)
 
 	wrapper := radix.Wrap(client)
-	set := &LocationSet{
-		Name:   key,
-		client: wrapper,
-	}
+	set := NewLocationSet(key, wrapper)
 
 	err = set.Add("Toronto", 43.6667, -79.4167)
 	hErr(err)

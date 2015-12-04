@@ -25,10 +25,7 @@ func init() {
 }
 
 func main() {
-	set := &proximity.LocationSet{
-		Name:   "go-prox-test",
-		client: radix.Wrap(redisConn),
-	}
+	set := proximity.NewLocationSet("go-prox-test", radix.Wrap(redisConn))
 
 	set.Add("Toronto", 43.6667, -79.4167)
 	set.Add("Philadelphia", 39.9523, -75.1638)

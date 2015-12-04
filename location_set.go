@@ -36,6 +36,14 @@ func (set *LocationSet) Near(lat, lng, radius float64) ([]string, error) {
 	return query(set.client, set.Name, intervals)
 }
 
+// NewLocationSet returns a LocationSet
+func NewLocationSet(name string, client Client) *LocationSet {
+	return &LocationSet{
+		Name:   name,
+		client: client,
+	}
+}
+
 func encode(lat, lng float64) float64 {
 	return float64(geohash.EncodeIntWithPrecision(lat, lng, maxBitDepth))
 }
