@@ -3,7 +3,7 @@ package proximity
 import (
 	"fmt"
 
-	"github.com/fzzy/radix/redis"
+	redis "github.com/mediocregopher/radix.v2/pool"
 	"github.com/ride/go-proximity/wrappers/radix"
 )
 
@@ -14,7 +14,7 @@ func hErr(err error) {
 }
 
 func Example() {
-	client, err := redis.Dial("tcp", "127.0.0.1:6379")
+	client, err := redis.New("tcp", "127.0.0.1:6379", 10)
 	hErr(err)
 
 	wrapper := radix.Wrap(client)
