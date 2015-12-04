@@ -1,4 +1,4 @@
-package proximity
+package intHash
 
 import (
 	"sort"
@@ -8,8 +8,12 @@ import (
 
 const maxBitDepth = 52
 
-// Int64arr is an array of int64 elements that can be sorted using the `sort`
-// package.
+// Encode returns a 52bit geohash integer from a <lat>, <lng> point.
+func Encode(lat, lng float64) float64 {
+	return float64(geohash.EncodeInt(lat, lng, maxBitDepth))
+}
+
+// Int64arr is an array of int64 elements that can be sorted using the `sort`// package.
 type Int64arr []int64
 
 func (a Int64arr) Len() int           { return len(a) }
@@ -33,8 +37,8 @@ func (a Int64arr) Include(x int64) bool {
 	return index < len(a) && a[index] == x
 }
 
-// intervalsFromRadius Get the intervals to look into given a point & a radius.
-func intervalsFromRadius(lat, lng, radius float64) []Int64arr {
+// IntervalsFromRadius returns the intervals to look into given a point & a radius.
+func IntervalsFromRadius(lat, lng, radius float64) []Int64arr {
 	radiusBits := geohash.FindBitDepth(radius)
 	hash := geohash.EncodeInt(lat, lng, radiusBits)
 
