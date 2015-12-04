@@ -15,13 +15,13 @@ import (
 
 	"github.com/fzzy/radix/redis"
 	"github.com/ride/go-proximity"
-	"github.com/ride/go-proximity/wrappers/radix"
+	redis "github.com/mediocregopher/radix.v2/pool"
 )
 
-var redisConn *redis.Client
+var redisConn *redis.Pool
 
 func init() {
-	redisConn, _ = redis.Dial("tcp", "127.0.0.1:6379")
+	redisConn, _ = redis.New("tcp", "127.0.0.1:6379", 10)
 }
 
 func main() {
@@ -52,7 +52,7 @@ type Client interface {
 }
 ```
 
-To make this easier, an interface is provided for Radix:
+To make this easier, an interface is provided for [Radix Pool][pool]:
 
 ```go
 func WrapRadixClient(radixClient) *Client
@@ -84,3 +84,5 @@ go test -v
 ```
 
 Copyright (c) 2015 ride group inc.
+
+[pool]:https://godoc.org/github.com/mediocregopher/radix.v2/pool

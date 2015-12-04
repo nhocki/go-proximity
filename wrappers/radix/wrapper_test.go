@@ -3,12 +3,12 @@ package radix
 import (
 	"testing"
 
-	"github.com/fzzy/radix/redis"
+	redis "github.com/mediocregopher/radix.v2/pool"
 	"github.com/stretchr/testify/assert"
 )
 
-func dial(t *testing.T) *redis.Client {
-	client, err := redis.Dial("tcp", "127.0.0.1:6379")
+func dial(t *testing.T) *redis.Pool {
+	client, err := redis.New("tcp", "127.0.0.1:6379", 10)
 	assert.Nil(t, err)
 	return client
 }
