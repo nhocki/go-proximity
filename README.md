@@ -79,7 +79,7 @@ done to prevent problems.
 Run tests with:
 
 ```sh
-go test -v
+go test -v ./...
 ```
 
 Copyright (c) 2015 ride group inc.
